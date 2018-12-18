@@ -1,36 +1,36 @@
 
 public class Equipment {
+	String name;
+	int armor;
+	boolean equiped;
 	
-	
-	
-	
-	class Breastplate {
-		String name;
-		int armor;		
+	class Breastplate extends Equipment {
+		
 	}
 	
-	class Helmet {
-		String name;
-		int armor;
+	class Helmet extends Equipment  {
+		
 	}
 	
-	class Leggins {
-		String name;
-		int armor;
+	class Leggins extends Equipment {
+		
 	}
 	
-	class Boots {
+	class Boots extends Equipment {
 		String name;
 		int armor;
+		boolean equiped;
 	}
 	
-	class Shield {
+	class Shield extends Equipment {
 		String name;
 		int armor;
+		boolean equiped;
 	}
 	
-	class Weapon {
+	class Weapon extends Equipment {
 		String name;
 		int damage;
+		boolean equiped;
 	}
 }

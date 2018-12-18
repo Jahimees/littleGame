@@ -4,6 +4,7 @@ import java.util.HashSet;
 public class Player {
 	ArrayList inventory = new ArrayList();
 	private int health;
+	Equipment equip = new Equipment();
 	
 	
 	////////////////////////GETTERS AND SETTERS////////////////////
