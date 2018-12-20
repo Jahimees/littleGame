@@ -1,10 +1,14 @@
 import java.util.ArrayList;
 import java.util.HashSet;
 
+
+
 public class Player {
 	ArrayList inventory = new ArrayList();
 	private int health;
-	EquipStatus eq = new EquipStatus();
+	public EquipStatus eq = new EquipStatus();
+	
+	/////////////////////////Methods///////////////////////////////		
 	
 	
 	////////////////////////GETTERS AND SETTERS////////////////////
@@ -15,43 +19,42 @@ public class Player {
 		this.health = health;
 	}
 	
-	class EquipStatus {
-		Equipment bp = new Breastplate();
-		Equipment helm = new Helmet();
-		Equipment legg = new Leggins();
-		Equipment boots = new Boots();
-		Equipment shield = new Shield();
-		Equipment weapon = new Weapon();
-		
-	}
 	
-	public class Equipment {		
-		String name;		
-		boolean equiped;		
-	}
-	
-	class Breastplate extends Equipment {
-		int armor;
-	}
-	
-	class Helmet extends Equipment  {
-		int armor;
-	}
-	
-	class Leggins extends Equipment {
-		int armor;
-	}
-	
-	class Boots extends Equipment {
-		int armor;
-	}
-	
-	class Shield extends Equipment {
-		int armor;
-	}
-	
-	class Weapon extends Equipment {
+	////////////////////////////EQUIP STATUS CLASS/////////////////////
+	public class EquipStatus{
 		int damage;
+		int totalArmor;
+		ArrayList<Equipment> allEquip = new ArrayList<Equipment>();
+		
+		
+		////////////////////////GETTERS AND SETTERS////////////////////			
+		public int getTotalArmor() {
+			return totalArmor;
+		}
+		public void setTotalArmor(int totalArmor1) {
+			this.totalArmor += totalArmor1;
+		}		
+		
+		public int getDamage() {
+			return damage;
+		}
+		public void setDamage(int damage1) {
+			this.damage = damage1;
+		}
+		
+		public void getAllEquip() {
+			System.out.println(allEquip);
+		}
+		
+		public void setAllEquip(Equipment equip) {
+			allEquip.add(equip); //add equip to ArrayList
+		}
+		
+		public void showEquipStatus() {
+			System.out.println("Armor:"+totalArmor);
+			System.out.println("damage:"+damage);
+			System.out.println((allEquip.get(0).name)); //doesn't work, cause it use Equipment and not Weapon or Armor
+		}		
 	}
 
 

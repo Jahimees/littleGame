@@ -1,8 +1,13 @@
 
+
 public class InputPoint {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		Player play = new Player();
+		BodyPart hd = new BodyPart("breast");
+		Equipment eq = new Armor("Жоцкая броня", 54, hd);
+		eq.equip(play);
+		play.eq.showEquipStatus();
 
 	}
 
