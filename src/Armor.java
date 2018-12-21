@@ -1,32 +1,33 @@
 public class Armor extends Equipment {
 	int armor;
-	BodyPart bodyPart;
+	public BodyPart bodyPart;
 	
-	public void setArmor(int armor1) {
-		armor = armor1;
+	public void setArmor(int armor) {
+		this.armor = armor;
 	}	
 	public int getArmor() {
 		return armor;
 	}
 	
-	public void setBodyPart(BodyPart bodyPart1) {
-		bodyPart = bodyPart1;
+	public void setBodyPart(BodyPart bodyPart) {
+		this.bodyPart = bodyPart;
 	}
 	
 	public String getName() {
 		return super.name;
 	}
 	
+	//////////////CONSTRUCTOR
 	Armor(String nam, int arm, BodyPart bp) {
-		super.name = name;
+		super.name = nam;
 		armor = arm;
 		bodyPart = bp;
 	}
 			
 	@Override
 	public void equip(Player player) {
-		player.eq.setAllEquip(this);
-		player.eq.setTotalArmor(armor); //
+		player.equipStatus.setAllArmor(this);
+		player.equipStatus.setTotalArmor(armor); //
 	}
 			
 }

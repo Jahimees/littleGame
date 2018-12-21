@@ -7,7 +7,7 @@
 		//////////////////////////Methods////////////////
 
 		public void equip(Player player) {
-			player.eq.setAllEquip(this);
+			//player.eq.setAllEquip(this);
 		}	
 	
 	
