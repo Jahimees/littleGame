@@ -1,14 +1,4 @@
-
-
-/////////////////////////EQUIPMENT/////////////////////////////
-	public class Equipment {		
-		String name;	//name of equip
-		
-		//////////////////////////Methods////////////////
-
-		public void equip(Player player) {
-			//player.eq.setAllEquip(this);
-		}	
-	
-	
-	}
+public abstract class Equipment {		
+	String name;
+	abstract public void equip(Player player);
+}

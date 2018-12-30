@@ -3,7 +3,23 @@ import java.util.HashSet;
 public class Player {
 	ArrayList inventory = new ArrayList();
 	private int health;
-	public EquipStatus equipStatus = new EquipStatus();
+	private int maxHealth;	
+	public Status equipStatus = new Status();
+	
+	/////////////////////////Constructors//////////////////////////
+	public Player() {
+		setHealth(100);
+		setMaxHealth(100);
+		equipStatus.setDamage(3);		
+	
+		BodyPart legs = new BodyPart("legs");
+		Armor legsArmor = new Armor("Обмотки на ноги", 1, legs);
+		legsArmor.equip(this);
+		
+		BodyPart breast = new BodyPart("breast");
+		Equipment breastArmor = new Armor("Обмотки", 0, breast);
+		breastArmor.equip(this);
+	}
 	
 	/////////////////////////Methods///////////////////////////////		
 	//openInventory
@@ -15,22 +31,27 @@ public class Player {
 	}
 	public void setHealth(int health) {
 		this.health = health;
+	}	
+	
+	public int getMaxHealth() {
+		return maxHealth;
 	}
-	
-	
+
+	public void setMaxHealth(int maxHealth) {
+		this.maxHealth = maxHealth;
+	}
+
 	////////////////////////////EQUIP STATUS CLASS/////////////////////
-	public class EquipStatus{
-		int damage;
-		int totalArmor;
+	public class Status{
+		private int damage;
+		private int totalArmor;
 		ArrayList<Armor> allArmor = new ArrayList<Armor>();
 		Weapon weapon;
 		boolean head;
 		boolean legs;
 		boolean breast;
 		boolean foots;
-		
-		
-		
+				
 		////////////////////////GETTERS AND SETTERS////////////////////			
 		public int getTotalArmor() {
 			return totalArmor;
@@ -52,10 +73,45 @@ public class Player {
 		
 		public void setAllArmor(Armor equip) {
 			switch (equip.bodyPart.getBodyPart()) { //need to do else parts (check for equipped items)
-			case "head": if (!head) {allArmor.add(equip); head = true;} else {}
-			case "legs": if (!legs) {allArmor.add(equip); legs = true;} else {}
-			case "breast": if (!breast) {allArmor.add(equip); breast = true;} else {}
-			case "foots": if (!foots) {allArmor.add(equip); foots = true;} else {}
+			case "head": if (!head) {
+				allArmor.add(equip);
+				head = true;
+				equipStatus.setTotalArmor(equip.getArmor());
+				break;
+				} else {
+					changeArmor("head", equip);				
+					break;
+				}
+			
+			case "legs": if (legs==false) {
+				allArmor.add(equip);
+				legs = true;
+				equipStatus.setTotalArmor(equip.getArmor());
+				break;
+				} else {
+					changeArmor("legs", equip);
+					break;
+					}
+			
+			
+			case "breast": if (!breast) {
+				allArmor.add(equip);
+				breast = true;
+				equipStatus.setTotalArmor(equip.getArmor());
+				break;
+				} else {
+					changeArmor("breast", equip);
+					break;
+				}
+			case "foots": if (!foots) {
+				allArmor.add(equip);
+				foots = true;
+				equipStatus.setTotalArmor(equip.getArmor());
+				break;
+				} else {
+					changeArmor("foots", equip);
+					break;
+				}
 			}			
 		}
 		
@@ -72,12 +128,43 @@ public class Player {
 			System.out.println(weapon.name);
 		}
 		
-		public void showEquipStatus() {
+		
+		///////////////////////////////////////SHOW ALL STATS
+		public void showFullStatus() {
+			System.out.println();
+			System.out.println("~~~~~Статус:~~~~~");
 			System.out.println("Armor:"+totalArmor);
-			System.out.println("damage:"+damage);
-			System.out.println((allArmor.get(0).name)); 
-			System.out.println(weapon.name);
-		}		
+			System.out.println("damage:"+ damage);	
+			System.out.println("~~~~~Экипировка:~~~~~");
+			for	(int i=0; i<allArmor.size(); i++) {	
+				System.out.println((allArmor.get(i).getName())+" ("+(allArmor.get(i).getBodyPart())+")"+" armor: "+allArmor.get(i).getArmor());
+			}
+			
+			if (weapon!=null) {
+				System.out.println(weapon.name);
+			}
+			System.out.print("Здоровье: "+getHealth());
+			System.out.println();
+			System.out.println("~~~~~~~~~~~~~~~~~~");
+			System.out.println();
+			
+		}
+		
+		
+		//////////////////////////////////////REMOVE ARMOR
+		public void changeArmor(String type, Armor equip) {
+			for (int i=0; i<allArmor.size(); i++) {
+				if (allArmor.get(i).bodyPart.getBodyPart()==type) {
+					equipStatus.setTotalArmor(-(allArmor.get(i).getArmor()));
+					allArmor.remove(i);
+					}
+				}
+			allArmor.add(equip);
+			System.out.println("Переодеваюсь!");
+			equipStatus.setTotalArmor(equip.getArmor());
+		}
+		
+		
 	}
 
 

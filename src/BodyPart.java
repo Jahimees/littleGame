@@ -1,26 +1,28 @@
 		
 
 public class BodyPart {
-		private boolean head;
-		private boolean legs;
-		private boolean breast;
-		private boolean foots;	
+		private boolean head = false;
+		private boolean legs = false;
+		private boolean breast = false;
+		private boolean foots = false;	
 		
 		public String getBodyPart() {
-			String ret;
-			if (head) {ret = "head";}
-			if (legs) {ret = "legs";}
-			if (breast) {ret = "breast";}
-			else ret = "foots";
+			String ret = null;
+			if (head==true) {ret = "head";}
+			if (legs==true) {ret = "legs";}				
+			if (breast==true) {ret = "breast";}
+			if (foots==true) {ret = "foots";}
+			
+			
 			return ret;
 		}
 		
 		public BodyPart(String type){
 			switch (type) {
-			case "head":{head = true;}
-			case "legs": {legs = true;}
-			case "breast": { breast = true;}
-			case "foots": { foots = true;}
+			case "head":{ head = true; break;}
+			case "legs": { legs = true; break;}
+			case "breast": { breast = true; break;}
+			case "foots": { foots = true; break;}
 			}				
 		}		
 }

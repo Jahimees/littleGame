@@ -1,6 +1,6 @@
 public class Armor extends Equipment {
-	int armor;
-	public BodyPart bodyPart;
+	private int armor;
+	BodyPart bodyPart;
 	
 	public void setArmor(int armor) {
 		this.armor = armor;
@@ -13,6 +13,10 @@ public class Armor extends Equipment {
 		this.bodyPart = bodyPart;
 	}
 	
+	public String getBodyPart() {
+		return bodyPart.getBodyPart();
+	}
+	
 	public String getName() {
 		return super.name;
 	}
@@ -21,13 +25,14 @@ public class Armor extends Equipment {
 	Armor(String nam, int arm, BodyPart bp) {
 		super.name = nam;
 		armor = arm;
-		bodyPart = bp;
+		setBodyPart(bp);
 	}
 			
 	@Override
 	public void equip(Player player) {
 		player.equipStatus.setAllArmor(this);
-		player.equipStatus.setTotalArmor(armor); //
+		//System.out.println(this.bodyPart.getBodyPart());
+		//player.equipStatus.setTotalArmor(this.getArmor()); //
 	}
 			
 }
