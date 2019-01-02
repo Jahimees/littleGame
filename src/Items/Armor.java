@@ -1,3 +1,7 @@
+package Items;
+
+import all.Player;
+
 public class Armor extends Equipment {
 	private int armor;
 	BodyPart bodyPart;
@@ -18,12 +22,12 @@ public class Armor extends Equipment {
 	}
 	
 	public String getName() {
-		return super.name;
+		return super.getName();
 	}
 	
 	//////////////CONSTRUCTOR
-	Armor(String nam, int arm, BodyPart bp) {
-		super.name = nam;
+	public Armor(String nam, int arm, BodyPart bp) {
+		super.setName(nam);
 		armor = arm;
 		setBodyPart(bp);
 	}

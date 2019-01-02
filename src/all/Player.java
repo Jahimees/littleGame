@@ -1,7 +1,14 @@
+package all;
 import java.util.ArrayList;
 import java.util.HashSet;
+
+import GUI.GUIInventory;
+import Items.Armor;
+import Items.BodyPart;
+import Items.Equipment;
+import Items.Weapon;
 public class Player {
-	ArrayList inventory = new ArrayList();
+	GUIInventory inventory = new GUIInventory();
 	private int health;
 	private int maxHealth;	
 	public Status equipStatus = new Status();
@@ -19,11 +26,15 @@ public class Player {
 		BodyPart breast = new BodyPart("breast");
 		Equipment breastArmor = new Armor("Обмотки", 0, breast);
 		breastArmor.equip(this);
+		inventory.initiateInventory();
 	}
 	
-	/////////////////////////Methods///////////////////////////////		
-	//openInventory
-	
+	/////////////////////////Methods///////////////////////////////	
+	//use item?????
+	//////wtf
+	public void openInventory() { ///////////NEED GUI
+		
+	}
 	
 	////////////////////////GETTERS AND SETTERS////////////////////
 	public int getHealth() {
@@ -72,7 +83,7 @@ public class Player {
 		}
 		
 		public void setAllArmor(Armor equip) {
-			switch (equip.bodyPart.getBodyPart()) { //need to do else parts (check for equipped items)
+			switch (equip.getBodyPart()) { //need to do else parts (check for equipped items)
 			case "head": if (!head) {
 				allArmor.add(equip);
 				head = true;
@@ -120,16 +131,17 @@ public class Player {
 		}
 		
 		public void getWeapon() {
-			System.out.println(weapon.name); //for time wrong getter
+			System.out.println(weapon.getName()); //for time wrong getter
 		}
 		
 		public void getAllEquip() { //for time wrong getter
 			System.out.println(allArmor);
-			System.out.println(weapon.name);
+			System.out.println(weapon.getName());
 		}
 		
 		
 		///////////////////////////////////////SHOW ALL STATS
+		////////////NEED GUI + CONNECT WITH INVENTORY
 		public void showFullStatus() {
 			System.out.println();
 			System.out.println("~~~~~Статус:~~~~~");
@@ -141,7 +153,7 @@ public class Player {
 			}
 			
 			if (weapon!=null) {
-				System.out.println(weapon.name);
+				System.out.println(weapon.getName()+" damage: "+getDamage());
 			}
 			System.out.print("Здоровье: "+getHealth());
 			System.out.println();
@@ -154,7 +166,7 @@ public class Player {
 		//////////////////////////////////////REMOVE ARMOR
 		public void changeArmor(String type, Armor equip) {
 			for (int i=0; i<allArmor.size(); i++) {
-				if (allArmor.get(i).bodyPart.getBodyPart()==type) {
+				if (allArmor.get(i).getBodyPart()==type) {
 					equipStatus.setTotalArmor(-(allArmor.get(i).getArmor()));
 					allArmor.remove(i);
 					}

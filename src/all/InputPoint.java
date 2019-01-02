@@ -1,4 +1,9 @@
+package all;
 
+import Items.Armor;
+import Items.BodyPart;
+import Items.Equipment;
+import Items.Weapon;
 
 public class InputPoint {
 
@@ -8,6 +13,8 @@ public class InputPoint {
 		BodyPart legs = new BodyPart("legs");
 		Equipment newLegs = new Armor("Штанишки", 5, legs);
 		newLegs.equip(play);
+		Equipment someSword = new Weapon("Меч какой-таааа", 10);
+		someSword.equip(play);
 		
 		play.equipStatus.showFullStatus();
 	}

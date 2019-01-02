@@ -1,3 +1,6 @@
+package Items;
+
+import all.Player;
 
 public class Weapon extends Equipment { 
 	private int damage;
@@ -18,8 +21,8 @@ public class Weapon extends Equipment {
 	}
 	
 	//////////////CONSTRUCTOR
-	Weapon(String nam, int dmg) {
-			super.name = nam;
+	public Weapon(String nam, int dmg) {
+			super.setName(nam);
 			damage = dmg;
 	}
 	
