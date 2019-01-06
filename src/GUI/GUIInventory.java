@@ -1,4 +1,11 @@
 package GUI;
+import java.awt.BorderLayout;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import Items.Equipment;
@@ -6,42 +13,28 @@ import Items.Food;
 import all.Player;
 
 public class GUIInventory {
-	JFrame inventoryFrame = new JFrame();
-	JButton button = new JButton("click me");
-	JPanel inventoryPanel = new JPanel();
-	private Food[] foodInventory = new Food[5];
-	private Equipment[] equipmentInventory = new Equipment[10];
+	JFrame inventoryFrame;
+	JPanel inventoryPanel;	
+	Image inventoryImage;
 	
 
 	
-	public void use(Food food) {
-		//
-	}
-	
-	////////WTF?????????
-	public void equip(Equipment equipment, Player player) {
-		equipment.equip(player);
-	}
-	
-	
-	public Food[] getFoodInventory() {
-		return foodInventory;
-	}
-	public void setFoodInventory(Food[] foodInventory) {
-		this.foodInventory = foodInventory;
-	}
-	public Equipment[] getEquipmentInventory() {
-		return equipmentInventory;
-	}
-	public void setEquipmentInventory(Equipment[] equipmentInventory) {
-		this.equipmentInventory = equipmentInventory;
-	} 
-	
-	
 	public void initiateInventory() {
-		inventoryFrame.setSize(300, 300);
-		inventoryFrame.getContentPane().add(button);
-		inventoryFrame.setVisible(true);
+		inventoryFrame = new JFrame();
+		inventoryFrame.setTitle("My Panel");
 		inventoryFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		inventoryPanel = new ImagePanel();
+		try {
+			((ImagePanel) inventoryPanel).setImage(ImageIO.read(new File("src\\images\\inventoryRUS.jpg")));
+			} catch (IOException e) {
+				e.printStackTrace();
+				}		
+		inventoryPanel.setSize(300, 400);		
+		inventoryFrame.add(inventoryPanel, BorderLayout.CENTER);
+		inventoryFrame.setSize(800, 600);
+		inventoryFrame.setResizable(false);
+		inventoryFrame.setVisible(false);
+		
 	}
 }
