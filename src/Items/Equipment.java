@@ -2,8 +2,8 @@ package Items;
 
 import all.Player;
 
-public abstract class Equipment {		
-	private String name;
+public abstract class Equipment extends Item {	
+	
 	abstract public void equip(Player player);
 	public String getName() {
 		return name;

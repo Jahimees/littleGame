@@ -26,7 +26,7 @@ public class Player {
 		BodyPart breast = new BodyPart("breast");
 		Equipment breastArmor = new Armor("Обмотки", 0, breast);
 		breastArmor.equip(this);
-		inventory.initiateInventory();
+		inventory.initializeInventory();
 	}
 	
 	/////////////////////////Methods///////////////////////////////	

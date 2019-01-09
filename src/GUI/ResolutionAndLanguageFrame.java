@@ -30,19 +30,19 @@ public class ResolutionAndLanguageFrame implements ActionListener {
 			((ImagePanel) choosePanel).setImage(ImageIO.read(new File("src\\images\\resolution and language.jpg")));
 			} catch (IOException e) {
 				e.printStackTrace();
-				}		
+			}		
 		RALFrame.setSize(400, 180);
 		RALFrame.getContentPane().add(choosePanel);
 		RALFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		 Font BigFontTR = new Font("TimesRoman", Font.PLAIN, 27);
+		Font BigFontTR = new Font("TimesRoman", Font.PLAIN, 27);
 		//////////////////////RESOLUTION
 		resolutionGroup = new ButtonGroup();
 		resolutionBox = new Box(3);
 		lowResolution = new JRadioButton("800x600");
 		lowResolution.setFont(BigFontTR);
 		lowResolution.setSelected(true);
-		highResolution = new JRadioButton("1280x720");
+		highResolution = new JRadioButton("1280x800");
 		highResolution.setFont(BigFontTR);
 		resolutionBox.add(highResolution);
 		resolutionBox.add(lowResolution);
@@ -80,22 +80,24 @@ public class ResolutionAndLanguageFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (languageEnglish.isSelected()) {			
-			GUIMainFrame.setLanguage("English");
+			GUIMainMenu.setLanguage("English");
 		} else {					
-			GUIMainFrame.setLanguage("Russian");
+			GUIMainMenu.setLanguage("Russian");
 		}
-		System.out.println(GUIMainFrame.getLanguage()+" language is selected");
+		System.out.println(GUIMainMenu.getLanguage()+" language is selected");
 		
 		if (lowResolution.isSelected()) {
-			GUIMainFrame.setResolution(800, 600);			
+			GUIMainMenu.setResolution(800, 600);			
 		} else {
-			GUIMainFrame.setResolution(1280, 720);
+			GUIMainMenu.setResolution(1280, 800);
 		}
-		if (GUIMainFrame.getResolution()==2000) {
-			System.out.println("1280x720 resolution is selected");
+		if (GUIMainMenu.getResolution()==2080) {
+			System.out.println("1280x800 resolution is selected");
 		} else {
 			System.out.println("800x600 resolution is selected");
 		}
+		GUIMainMenu.initializeMainMenu();
+		RALFrame.setVisible(false);
 		
 	}		
 }

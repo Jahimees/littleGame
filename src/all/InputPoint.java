@@ -2,7 +2,7 @@ package all;
 
 import javax.swing.*;
 
-import GUI.GUIMainFrame;
+import GUI.GUIMainMenu;
 import GUI.ResolutionAndLanguageFrame;
 import Items.Armor;
 import Items.BodyPart;

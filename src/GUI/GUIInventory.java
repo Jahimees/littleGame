@@ -19,14 +19,14 @@ public class GUIInventory {
 	
 
 	
-	public void initiateInventory() {
+	public void initializeInventory() {
 		inventoryFrame = new JFrame();
 		inventoryFrame.setTitle("My Panel");
 		inventoryFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		inventoryPanel = new ImagePanel();
 		try {
-			((ImagePanel) inventoryPanel).setImage(ImageIO.read(new File("src\\images\\inventoryRUS.jpg")));
+			((ImagePanel) inventoryPanel).setImage(ImageIO.read(new File("src\\images\\inventory.jpg")));
 			} catch (IOException e) {
 				e.printStackTrace();
 				}		
