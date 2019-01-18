@@ -18,10 +18,15 @@ public class GUIMainMenu {
 	private static JPanel backgroundPanel;
 	private static JFrame mainMenuFrame;	
 	private static Box mainMenuBox;
+	private static Box playerMenuBox;
 	static ActionListener exitListener;
 	static ActionListener playListener;
+	static ActionListener createListener;
+	static ActionListener loadListener;
 	static JButton play;
 	static JButton exit;	
+	static JButton create;
+	static JButton load;
 	
 	public static void setLanguage(String s) {
 		language = s;
@@ -48,6 +53,7 @@ public class GUIMainMenu {
 		mainMenuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Font BigFontTR = new Font("TimesRoman", Font.PLAIN, 27);
 		mainMenuBox = new Box(3);
+		playerMenuBox = new Box(3);
 		
 		///////////////////////////////////////////CHOOSEN RESOLUTION
 		if (GUIMainMenu.getResolution()==2080) {
@@ -73,9 +79,13 @@ public class GUIMainMenu {
 		if (GUIMainMenu.getLanguage()=="English") {
 			play = new JButton("Play");
 			exit = new JButton("Exit");
+			create = new JButton("Create new character");
+			load = new JButton("Load charachter");
 		} else {
 			play = new JButton("Играть");
 			exit = new JButton("Выход");
+			create = new JButton("Создать нового персонажа");
+			load = new JButton("Загрузить персонажа");
 		}
 	
 		mainMenuBox.add(play);
@@ -86,7 +96,17 @@ public class GUIMainMenu {
 		play.setFont(BigFontTR);
 		exit.setFont(BigFontTR);	
 		exit.addActionListener(exitListener);
+		play.addActionListener(playListener);
 		
+		playerMenuBox.add(create);
+		playerMenuBox.add(load);
+		createListener = new CreateListener();
+		loadListener = new LoadListener();
+		create.setFont(BigFontTR);
+		load.setFont(BigFontTR);
+		create.addActionListener(createListener);
+		load.addActionListener(loadListener);
+		playerMenuBox.setVisible(false);
 		
 	}
 	
@@ -100,7 +120,28 @@ public class GUIMainMenu {
 	static class PlayListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub			
+			mainMenuBox.setVisible(false);
+			backgroundPanel.remove(mainMenuBox);
+			backgroundPanel.add(playerMenuBox);
+			playerMenuBox.setVisible(true);
+		}		
+	}
+	
+	static class CreateListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}		
+	}
+	
+	static class LoadListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			// TODO Auto-generated method stub
+			
 		}		
 	}
 
