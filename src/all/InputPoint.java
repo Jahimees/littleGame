@@ -1,9 +1,12 @@
 package all;
 
+import java.awt.EventQueue;
+
 import javax.swing.*;
 
-import GUI.GUIMainMenu;
-import GUI.ResolutionAndLanguageFrame;
+import GUI.LanguageFrame;
+import GUI.MainWindow;
+
 import Items.Armor;
 import Items.BodyPart;
 import Items.Equipment;
@@ -12,8 +15,12 @@ import Items.Weapon;
 public class InputPoint {
 
 	
-	
+	/**
+	 * Launch the application.
+	 */
 	public static void main(String[] args) {
+
+
 		Player play = new Player();
 		play.equipStatus.showFullStatus();
 		BodyPart legs = new BodyPart("legs");
@@ -25,10 +32,21 @@ public class InputPoint {
 		
 		
 		play.equipStatus.showFullStatus();
+
+		LanguageFrame f = new LanguageFrame();
 		
 		//////////////////////////////////
-		ResolutionAndLanguageFrame f = new ResolutionAndLanguageFrame();
-		
+		///////////////////////////////////////
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					MainWindow window = new MainWindow();
+					window.frame.setVisible(false);
+					} catch (Exception e) {
+						e.printStackTrace();
+						}
+				}
+		});
 		
 	}
 
