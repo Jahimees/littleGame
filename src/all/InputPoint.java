@@ -6,7 +6,6 @@ import javax.swing.*;
 
 import GUI.LanguageFrame;
 import GUI.MainWindow;
-
 import Items.Armor;
 import Items.BodyPart;
 import Items.Equipment;
@@ -14,7 +13,7 @@ import Items.Weapon;
 
 public class InputPoint {
 
-	
+	public MainWindow mainWindow;
 	/**
 	 * Launch the application.
 	 */
@@ -32,22 +31,21 @@ public class InputPoint {
 		
 		
 		play.equipStatus.showFullStatus();
-
-		LanguageFrame f = new LanguageFrame();
 		
 		//////////////////////////////////
-		///////////////////////////////////////
+		
+		MainWindow.setLanguage("English");
+		System.out.println(MainWindow.getLanguage()+" language is selected");
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainWindow window = new MainWindow();
-					window.frame.setVisible(false);
+					MainWindow window = new MainWindow();					
 					} catch (Exception e) {
 						e.printStackTrace();
 						}
 				}
 		});
-		
 	}
 
 }

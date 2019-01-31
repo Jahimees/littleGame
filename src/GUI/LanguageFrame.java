@@ -29,7 +29,8 @@ public class LanguageFrame {
 			}		
 		RALFrame.setSize(250, 250);
 		RALFrame.getContentPane().add(choosePanel);
-		RALFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		RALFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		
+		RALFrame.setBounds(200, 200, 250, 250);
 		
 		//////////////////////LANGUAGE
 		 chooseEng = new JLabel("");
@@ -39,7 +40,7 @@ public class LanguageFrame {
 		 chooseEng.addMouseListener(new MouseListener() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				MainWindow.setLanguage("English");
+				
 				LanguageFrame.init();
 			}
 			@Override
@@ -50,9 +51,11 @@ public class LanguageFrame {
 			}
 			@Override
 			public void mousePressed(MouseEvent arg0) {
+				chooseEng.setIcon(new ImageIcon(MainWindow.class.getResource("/images/menuButtons/chooseEngPressed.png")));
 			}
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
+				chooseEng.setIcon(new ImageIcon(MainWindow.class.getResource("/images/menuButtons/chooseEng.png")));
 			}			 
 		 });
 		 
@@ -64,6 +67,7 @@ public class LanguageFrame {
 				@Override
 				public void mouseClicked(MouseEvent arg0) {
 					MainWindow.setLanguage("Russian");
+					MainWindow.setRussian();
 					LanguageFrame.init();
 				}
 				@Override
@@ -74,32 +78,22 @@ public class LanguageFrame {
 				}
 				@Override
 				public void mousePressed(MouseEvent arg0) {
+					chooseRus.setIcon(new ImageIcon(MainWindow.class.getResource("/images/menuButtons/chooseRusPressed.png")));
 				}
 				@Override
 				public void mouseReleased(MouseEvent arg0) {
+					chooseRus.setIcon(new ImageIcon(MainWindow.class.getResource("/images/menuButtons/chooseRus.png")));
 				}			 
 			 });	
 		
 		RALFrame.add(choosePanel);
-		RALFrame.setResizable(false);
+		RALFrame.setResizable(false);		
 		RALFrame.setVisible(true);
 		
 	}
 
 	public static void init() {
-		System.out.println(MainWindow.getLanguage()+" language is selected");
 		
-		RALFrame.setVisible(false);
-		
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MainWindow window = new MainWindow();
-					} catch (Exception e) {
-						e.printStackTrace();
-						}
-				}
-		});
 	}
 	
 }
