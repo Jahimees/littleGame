@@ -28,7 +28,7 @@ public class InputPoint {
 		Equipment someSword = new Weapon("Меч какой-таааа", 10);
 		someSword.equip(play);
 
-		
+	
 		
 		play.equipStatus.showFullStatus();
 		

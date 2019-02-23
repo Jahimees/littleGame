@@ -58,6 +58,7 @@ import java.awt.ComponentOrientation;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.util.Locale;
+import javax.swing.JTextField;
 
 public class MainWindow {
 
@@ -74,6 +75,7 @@ public class MainWindow {
 	static JLabel backLabelSettings;
 	static Choice languageChoice;
 	static JLabel createLabel;
+	private JTextField textField;
 	
 	/**
 	 * Create the application.
@@ -421,7 +423,17 @@ public class MainWindow {
 			backLabelSettings.setIcon(new ImageIcon(MainWindow.class.getResource("/images/menuButtons/backEng.png")));
 			backLabelSettings.setBounds(605, 477, 265, 94);
 			settingsPanel.add(backLabelSettings);
+			
+			textField = new JTextField();
+			textField.setBounds(386, 0, 116, 22);
+			settingsPanel.add(textField);
+			textField.setColumns(10);
 			backLabel.setBounds(500, 623, 265, 93);
+			
+			//////////////////////////////E
+			JPanel panel = new ImagePanel();
+			panel.setBounds(439, 46, 391, 141);
+			backgroundPanel.add(panel);
 			backLabelSettings.setVisible(true);
 			backLabelSettings.addMouseListener(new MouseListener() {
 				@Override
